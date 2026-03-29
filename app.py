@@ -163,9 +163,9 @@ st.divider()
 st.markdown("##  Step 2: AI Localization & Translation")
 
 default_dialect_map = {
-    "South-East Coast": "Chittagonian (Chatgaiya)",
+    "South-East Coast": "Chatgaiya",
     "Greater Noakhali": "Noakhailla",
-    "Greater Barishal": "Barishali",
+    "Greater Barishal": "Barishailla",
     "North-East Haor": "Sylheti",
     "South-West Coast": "Standard / Khulna",
     "Northern Flood Basin": "Rangpuri / Northern"
@@ -178,8 +178,8 @@ if target_region in ["Northern Flood Basin", "North-East Haor"]:
 official_warning = st.text_area(
     "Input Raw Meteorological Data (Edit this to see AI adapt):", default_msg, height=100)
 
-target_dialect = st.selectbox("Select Target Dialect for Translation:", ["Chittagonian (Chatgaiya)", "Noakhailla", "Barishali", "Sylheti", "Rangpuri / Northern", "Standard / Khulna"],
-                              index=["Chittagonian (Chatgaiya)", "Noakhailla", "Barishali", "Sylheti", "Rangpuri / Northern", "Standard / Khulna"].index(default_dialect_map[target_region]))
+target_dialect = st.selectbox("Select Target Dialect for Translation:", ["Chatgaiya", "Noakhailla", "Barishailla", "Sylheti", "Rangpuri / Northern", "Standard / Khulna"],
+                              index=["Chatgaiya", "Noakhailla", "Barishailla", "Sylheti", "Rangpuri / Northern", "Standard / Khulna"].index(default_dialect_map[target_region]))
 
 if st.button("🔄 Generate Localized AI Alert"):
     with st.spinner(f"Translating dynamic data to {target_dialect}..."):
