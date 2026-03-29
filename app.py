@@ -212,11 +212,11 @@ if st.button("🔄 Generate Localized AI Alert"):
                 action_ran = "নিরাপদ জাগাত সাবধানে থাকেন।"
                 action_std = "নিরাপদ আশ্রয়ে সাবধানে থাকুন।"
 
-            if "Chittagonian" in target_dialect:
+            if "Chatgaiya" in target_dialect:
                 translated_text = f"অঁনরা সাবধানে থাইক্কন! {hazard_name} আইয়ের। {user_val} মাত্রায় বিপদ অইত পারে। {action_ctg}"
             elif "Noakhailla" in target_dialect:
                 translated_text = f"আন্নেরা বেজ্ঞুনে হুশিয়ার অই যান! {hazard_name} আয়ের। {user_val} মাত্রার বিপদ অইত পারে। {action_noa}"
-            elif "Barishali" in target_dialect:
+            elif "Barishailla" in target_dialect:
                 translated_text = f"মোগো এহানে {hazard_name} আইতেছে। {user_val} মাত্রায় বিপদ বাড়তে পারে। সগ্গলে মিল্লা {action_bar}"
             elif "Sylheti" in target_dialect:
                 translated_text = f"আপনারা হকল সাবধান অইযাউক্কা! {hazard_name} আরর। {user_val} মাত্রাত বিপদ অইত ফারে। {action_syl}"
