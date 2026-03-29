@@ -113,9 +113,9 @@ if not demo_mode:
     twilio_token = st.sidebar.text_input("Twilio Token", type="password")
     twilio_phone = st.sidebar.text_input("Twilio Phone")
 
-col_logo, col_title = st.columns([1, 15])
+col_logo, col_title = st.columns([1.5, 15])
 with col_logo:
-    st.image("agambartalogo.png", width=70)
+    st.image("agambartalogo.png", width=80)
 with col_title:
     st.title("AgamBarta Command Center")
 st.markdown(
