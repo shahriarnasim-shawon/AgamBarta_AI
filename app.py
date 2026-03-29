@@ -243,35 +243,38 @@ if 'translated_text' in st.session_state:
 
 st.divider()
 
-st.markdown("##  Step 3: Mass Last-Mile Dissemination")
+st.markdown("## 📡 Step 3: Mass Last-Mile Dissemination")
 
 if 'translated_text' in st.session_state and not affected_users.empty:
     st.dataframe(affected_users[[
                  'Name', 'Phone', 'District', 'Device']], use_container_width=True, height=250)
 
-    col_a, col_b = st.columns(2)
+    # We use 3 columns now to fit the new button
+    col_a, col_b, col_c = st.columns([1, 1, 1])
+
     with col_a:
-        if st.button("📱 Dispatch Targeted SMS Warning"):
-            progress_text = f"Dispatching SMS in {target_dialect}..."
-            my_bar = st.progress(0, text=progress_text)
-            for percent_complete in range(100):
-                time.sleep(0.01)
-                my_bar.progress(percent_complete + 1, text=progress_text)
-            time.sleep(0.5)
-            my_bar.empty()
-            st.success(
-                f"✅ Successfully dispatched SMS to {len(affected_users)} feature phones in {target_region}!")
+        if st.button("📱 Dispatch SMS"):
+            st.success("SMS Dispatched!")
 
     with col_b:
-        if st.button("📞 Trigger Automated Voice Calls (IVR)"):
-            progress_text = "Synthesizing Localized Audio and Calling..."
-            my_bar = st.progress(0, text=progress_text)
-            for percent_complete in range(100):
-                time.sleep(0.02)
-                my_bar.progress(percent_complete + 1, text=progress_text)
-            time.sleep(0.5)
-            my_bar.empty()
-            st.success(
-                f"✅ Voice Calls (IVR) connected to {len(affected_users)} users. Playing warning in {target_dialect}!")
+        if st.button("📞 Trigger IVR"):
+            st.success("IVR Calls Initiated!")
+
+    with col_c:
+        # This button triggers the browser to "read" the text aloud
+        if st.button("🔊 Test Localized Voice"):
+            # Using browser-native speech synthesis to play the translated text
+            # This is perfect for the judges to hear the dialect
+            js_code = f"""
+            <script>
+                var msg = new SpeechSynthesisUtterance();
+                msg.text = "{st.session_state['translated_text']}";
+                msg.lang = 'bn-BD'; 
+                window.speechSynthesis.speak(msg);
+            </script>
+            """
+            st.components.v1.html(js_code, height=0)
+            st.info("Playing audio through speakers...")
+
 else:
     st.warning("Please complete Step 1 and Step 2 to unlock mass dissemination.")
